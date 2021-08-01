@@ -22,6 +22,76 @@ img{
   align-items: center;
   justify-content: center;
 }
+/* Menu section */
+#menu{
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: auto;
+}
+#menu .menu{
+  min-height: 8vh;
+  background-color: rgba(31, 30, 30, 0.24);
+  transition: .3s ease background-color;
+}
+.menu .nav-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1300px;
+  padding: 0 10px;
+}
+.menu .nav-bar .brand h1{
+  font-size: 2.6rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  text-align: center;
+}
+.menu .nav-bar .brand span{
+  color: crimson;
+}
+#menu .nav-list ul{
+  list-style: none;
+  position: initial;
+  background-color: transparent;
+  width: fit-content;
+  height: auto;
+  left: 0;
+  top: 0;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  overflow: hidden;
+}
+#menu .nav-list ul li{
+  display: inline-block;
+}
+#menu .nav-list ul a{
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: .2rem;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  display: block;
+}
+
+#menu .nav-list ul li:hover a{
+  color: crimson;
+}
+
+/* end Menu section */
+
 
 /* Header section */
 #header{
@@ -50,7 +120,7 @@ img{
 #header h1{
   display: block;
   width: fit-content;
-  font-size: 4rem;
+  font-size: 7rem;
   position: relative;
   color: transparent;
   animation: text_reveal .5s ease forwards;
@@ -66,13 +136,14 @@ img{
   animation: text_reveal_name .5s ease forwards;
   animation-delay: 3s;
 }
+
 #header h1 span{
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 0;
-  background-color: blueviolet;
+  background-color: crimson;
   animation: text_reveal_box 1s ease;
   animation-delay: .5s;
 }
@@ -90,7 +161,7 @@ img{
   padding: 10px 30px;
   color:white;
   background-color: transparent;
-  border: 2px solid blueviolet;
+  border: 2px solid crimson;
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: .1rem;
@@ -100,7 +171,7 @@ img{
 }
 #header .fta:hover{
   color: white;
-  background-color: blueviolet;
+  background-color: crimson;
 }
 
 /*end Header section */
@@ -237,9 +308,9 @@ img{
   background-color: white;
   width: 100%;
   height: 300px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  white-space: nowrap;
+  overflow: scroll;
+  
+  
 }
 #code .code-done-by pre{
   background: #f4f4f4;
@@ -271,6 +342,7 @@ img{
   line-height: 2;
   tab-size: 2;
   hyphens: none;
+ 
 }
 /*end code Section */
 
@@ -511,9 +583,12 @@ img{
 }
 @keyframes text_reveal_name{
   100%{
-    color: blueviolet;
+    color:crimson;
     font-weight: 500;
+    text-transform: uppercase;
+
   }
 }
+
 
 /* end keyframes */

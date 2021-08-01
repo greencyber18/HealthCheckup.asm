@@ -12,6 +12,34 @@
 </head>
 
 <body>
+  <!-- menu section -->
+  <section id="menu">
+    <div class="menu container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#header">
+            <h1>Safe dig<span>n</span>os<span>t</span>c center</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#header" data-after="Home">Home</a></li>
+            <li><a href="#code" data-after="code">Code</a></li>
+            <li><a href="#output" data-after="Output">Output</a></li>
+            <li><a href="#team" data-after="Our Team">Our Team</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- end menu section -->
+
   <!-- Header section -->
   <section id="header">
     <div class="header container">
@@ -23,9 +51,9 @@
           Welcome to <span></span>
         </h1>
         <h1>
-          Our Project <span></span>
+          Safe dignostic center<span></span>
         </h1>
-        <a href="#" class="fta">About us</a>
+        <a href="https://github.com/greencyber18/HealthCheckup.asm" class="fta" target="_blank">Git Link</a>
       </div>
     </div>
   </section>
@@ -53,13 +81,396 @@
                 <div class="scroll">
                   <pre>
                     <code>
-                      #include <iostream>
-                        using namespace std;
                         
-                        int main() {
-                          cout << "Hello World!";
-                          return 0;
-                        }
+                      .model small
+                      .stack 100h
+                      .data        
+                      a db 10,13,'       ********************************************************** $'   
+                      b db 10,13, '           Find out your health stability(covid)!!  $'
+                      c db 10,13, '        For each question, enter y if you have the symptom $' 
+                      
+                      d db 10,13, 'start?(y/n) $'
+                      
+                      e db 10,13, ' Are you suffering from fever?(y/n) $'  
+                      
+                      f db 10,13, ' Are you snoring (y/n) $'  
+                      
+                      
+                      g db 10,13, ' Are you coughing (y/n) $' 
+                      
+                      h db 10,13, ' Are you suffering from dysentery (y/n) $ '  
+                      
+                      
+                      i db 10,13, ' You health status is excellent. Stay home,Stay Safe $ ' 
+                      
+                      
+                      j db 10,13, ' Your health status isnot alarming, but contact with an certified physician and take proper medicines $ '
+                      
+                      
+                      k db 10,13, ' your health status isnot so good. Covid test is mandatory $ '
+                      
+                      
+                      l db 10,13, ' Your health condition is worst. Covid test needed  $ ' 
+                      
+                      m db 10,13, ' Your symtoms matches with covid. Please imidiately get yourself admitted in hospital $ ' 
+                        
+                      
+                      .code
+                      main proc
+                          mov ax,@data
+                          mov ds,ax
+                          ; Message to the User
+                          mov ah,9
+                          lea dx,a
+                          int 21h   
+                          
+                          
+                          
+                        ; Message to the User
+                          mov ah,9
+                          lea dx,a
+                          int 21h 
+                      
+                         
+                          mov ah,9
+                          lea dx,b
+                          int 21h 
+                          
+                          mov ah,9
+                          lea dx,c
+                          int 21h 
+                          
+                          
+                          mov ah,9
+                          lea dx,a
+                          int 21h 
+                         
+                         
+                          mov ah,9
+                          lea dx,d
+                          int 21h
+                          
+                      start: 
+                         
+                          mov ah,1
+                          int 21h
+                          mov cl,al
+                          
+                          cmp cl,'y'
+                          je next1
+                          cmp cl,'Y'
+                          je next1
+                          
+                          
+                          cmp cl,'n'
+                          je exit
+                          cmp cl,'N'
+                          je exit
+                          
+                      next1:
+                       
+                          mov ah,9
+                          lea dx,e
+                          int 21h 
+                          
+                          sub cl,cl
+                          
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt1
+                          
+                          cmp cl,'n'
+                          je nsnxt1
+                          
+                      
+                          
+                      
+                      snxt1:
+                          
+                         
+                          mov bl,50
+                          
+                          
+                          jmp next2  
+                          
+                      nsnxt1:
+                      
+                          mov bl, 48
+                          
+                          jmp next2
+                          
+                      
+                      next2:
+                       
+                          mov ah,9
+                          lea dx,f
+                          int 21h 
+                          
+                      
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt2
+                       
+                       
+                          cmp cl,'n'
+                          je nsnxt2
+                         
+                      
+                      snxt2:
+                          
+                          
+                          mov bh,50 
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          
+                          jmp next3
+                          
+                          
+                      nsnxt2:
+                          
+                          sub bh,bh
+                          mov bh, 48 
+                          
+                          
+                          
+                              
+                          add bl,bh
+                          sub bl,48
+                          jmp next3
+                             
+                          
+                          
+                                  
+                      next3:
+                       
+                          mov ah,9
+                          lea dx,g
+                          int 21h 
+                          
+                          sub cl,cl
+                          
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt3
+                          
+                          
+                          cmp cl,'n'
+                          je nsnxt3
+                          
+                      
+                      snxt3:
+                          
+                          sub bh,bh
+                          mov bh,50 
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          
+                          jmp next4
+                      
+                      
+                      
+                      nsnxt3:
+                          
+                          sub bh,bh
+                          mov bh, 48 
+                          
+                          
+                          
+                          add bl,bh
+                          sub bl,48
+                          jmp next4
+                             
+                      
+                      
+                          
+                          
+                      next4:
+                       
+                          mov ah,9
+                          lea dx,h
+                          int 21h 
+                          
+                          sub cl,cl
+                          
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt4
+                          
+                          
+                          cmp cl,'n'
+                          je nsnxt4
+                          
+                          
+                          
+                      snxt4:
+                          
+                          sub bh,bh
+                          mov bh,50 
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          
+                          jmp output
+                          
+                          
+                          
+                      nsnxt4:
+                          
+                          sub bh,bh
+                          mov bh, 48 
+                          
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          jmp output
+                             
+                              
+                      output:
+                      
+                        
+                      
+                        
+                        cmp bl,48
+                      
+                        je status1
+                      
+                      
+                        cmp bl,50
+                      
+                        je status2
+                      
+                      
+                        cmp bl,52
+                      
+                        je status3
+                      
+                      
+                        cmp bl,54
+                      
+                        je status4 
+                      
+                      
+                        cmp bl,56
+                      
+                        je status5     
+                      
+                      
+                      
+                      
+                      status1: 
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                      
+                          mov ah,9
+                          lea dx,i
+                          int 21h  
+                          
+                          jmp exit
+                      
+                      
+                      
+                      
+                      
+                      status2:
+                      
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                          mov ah,9
+                          lea dx,j
+                          int 21h
+                          
+                            
+                          jmp exit
+                      
+                      
+                      status3:
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                      
+                          mov ah,9
+                          lea dx,k
+                          int 21h 
+                          
+                          jmp exit   
+                          
+                          
+                      status4:   
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                          mov ah,9
+                          lea dx,l
+                          int 21h 
+                                     
+                          jmp exit 
+                          
+                          
+                                    
+                      status5:   
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                          mov ah,9
+                          lea dx,m
+                          int 21h 
+                      
+                      
+                          jmp exit
+                       exit:
+                          mov ah,4ch
+                          int 21h
+                          main endp 
+                      end main
+                      
                     </code>
                   </pre>
                 </div>
@@ -87,13 +498,394 @@
                 <div class="scroll">
                   <pre>
                     <code>
-                      #include <iostream>
-                        using namespace std;
-                        
-                        int main() {
-                          cout << "Hello World! razzak";
-                          return 0;
-                        }
+.model small
+.stack 100h
+.data        
+a db 10,13,'       ********************************************************** $'   
+b db 10,13, '           Find out your health stability(covid)!!  $'
+c db 10,13, '        For each question, enter y if you have the symptom $' 
+
+d db 10,13, 'start?(y/n) $'
+
+e db 10,13, ' Are you suffering from fever?(y/n) $'  
+
+f db 10,13, ' Are you snoring (y/n) $'  
+
+
+g db 10,13, ' Are you coughing (y/n) $' 
+
+h db 10,13, ' Are you suffering from dysentery (y/n) $ '  
+
+
+i db 10,13, ' You health status is excellent. Stay home,Stay Safe $ ' 
+
+
+j db 10,13, ' Your health status isnot alarming, but contact with an certified physician and take proper medicines $ '
+
+
+k db 10,13, ' your health status isnot so good. Covid test is mandatory $ '
+
+
+l db 10,13, ' Your health condition is worst. Covid test needed  $ ' 
+
+m db 10,13, ' Your symtoms matches with covid. Please imidiately get yourself admitted in hospital $ ' 
+  
+
+.code
+main proc
+    mov ax,@data
+    mov ds,ax
+    ; Message to the User
+    mov ah,9
+    lea dx,a
+    int 21h   
+    
+    
+    
+  ; Message to the User
+    mov ah,9
+    lea dx,a
+    int 21h 
+
+   
+    mov ah,9
+    lea dx,b
+    int 21h 
+    
+    mov ah,9
+    lea dx,c
+    int 21h 
+    
+    
+    mov ah,9
+    lea dx,a
+    int 21h 
+   
+   
+    mov ah,9
+    lea dx,d
+    int 21h
+    
+start: 
+   
+    mov ah,1
+    int 21h
+    mov cl,al
+    
+    cmp cl,'y'
+    je next1
+    cmp cl,'Y'
+    je next1
+    
+    
+    cmp cl,'n'
+    je exit
+    cmp cl,'N'
+    je exit
+    
+next1:
+ 
+    mov ah,9
+    lea dx,e
+    int 21h 
+    
+    sub cl,cl
+    
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt1
+    
+    cmp cl,'n'
+    je nsnxt1
+    
+
+    
+
+snxt1:
+    
+   
+    mov bl,50
+    
+    
+    jmp next2  
+    
+nsnxt1:
+
+    mov bl, 48
+    
+    jmp next2
+    
+
+next2:
+ 
+    mov ah,9
+    lea dx,f
+    int 21h 
+    
+
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt2
+ 
+ 
+    cmp cl,'n'
+    je nsnxt2
+   
+
+snxt2:
+    
+    
+    mov bh,50 
+    
+    add bl,bh
+    sub bl,48
+    
+    
+    jmp next3
+    
+    
+nsnxt2:
+    
+    sub bh,bh
+    mov bh, 48 
+    
+    
+    
+        
+    add bl,bh
+    sub bl,48
+    jmp next3
+       
+    
+    
+            
+next3:
+ 
+    mov ah,9
+    lea dx,g
+    int 21h 
+    
+    sub cl,cl
+    
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt3
+    
+    
+    cmp cl,'n'
+    je nsnxt3
+    
+
+snxt3:
+    
+    sub bh,bh
+    mov bh,50 
+    
+    add bl,bh
+    sub bl,48
+    
+    
+    jmp next4
+
+
+
+nsnxt3:
+    
+    sub bh,bh
+    mov bh, 48 
+    
+    
+    
+    add bl,bh
+    sub bl,48
+    jmp next4
+       
+
+
+    
+    
+next4:
+ 
+    mov ah,9
+    lea dx,h
+    int 21h 
+    
+    sub cl,cl
+    
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt4
+    
+    
+    cmp cl,'n'
+    je nsnxt4
+    
+    
+    
+snxt4:
+    
+    sub bh,bh
+    mov bh,50 
+    
+    add bl,bh
+    sub bl,48
+    
+    
+    jmp output
+    
+    
+    
+nsnxt4:
+    
+    sub bh,bh
+    mov bh, 48 
+    
+    
+    add bl,bh
+    sub bl,48
+    
+    jmp output
+       
+        
+output:
+
+  
+
+  
+  cmp bl,48
+
+  je status1
+
+
+  cmp bl,50
+
+  je status2
+
+
+  cmp bl,52
+
+  je status3
+
+
+  cmp bl,54
+
+  je status4 
+
+
+  cmp bl,56
+
+  je status5     
+
+
+
+
+status1: 
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+
+    mov ah,9
+    lea dx,i
+    int 21h  
+    
+    jmp exit
+
+
+
+
+
+status2:
+
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+    mov ah,9
+    lea dx,j
+    int 21h
+    
+      
+    jmp exit
+
+
+status3:
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+
+    mov ah,9
+    lea dx,k
+    int 21h 
+    
+    jmp exit   
+    
+    
+status4:   
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+    mov ah,9
+    lea dx,l
+    int 21h 
+               
+    jmp exit 
+    
+    
+              
+status5:   
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+    mov ah,9
+    lea dx,m
+    int 21h 
+
+
+    jmp exit
+ exit:
+    mov ah,4ch
+    int 21h
+    main endp 
+end main
                     </code>
                   </pre>
                 </div>
@@ -122,13 +914,395 @@
                 <div class="scroll">
                   <pre>
                     <code>
-                      #include <iostream>
-                        using namespace std;
-                        
-                        int main() {
-                          cout << "Hello World!";
-                          return 0;
-                        }
+                      
+.model small
+.stack 100h
+.data        
+a db 10,13,'       ********************************************************** $'   
+b db 10,13, '           Find out your health stability(covid)!!  $'
+c db 10,13, '        For each question, enter y if you have the symptom $' 
+
+d db 10,13, 'start?(y/n) $'
+
+e db 10,13, ' Are you suffering from fever?(y/n) $'  
+
+f db 10,13, ' Are you snoring (y/n) $'  
+
+
+g db 10,13, ' Are you coughing (y/n) $' 
+
+h db 10,13, ' Are you suffering from dysentery (y/n) $ '  
+
+
+i db 10,13, ' You health status is excellent. Stay home,Stay Safe $ ' 
+
+
+j db 10,13, ' Your health status isnot alarming, but contact with an certified physician and take proper medicines $ '
+
+
+k db 10,13, ' your health status isnot so good. Covid test is mandatory $ '
+
+
+l db 10,13, ' Your health condition is worst. Covid test needed  $ ' 
+
+m db 10,13, ' Your symtoms matches with covid. Please imidiately get yourself admitted in hospital $ ' 
+  
+
+.code
+main proc
+    mov ax,@data
+    mov ds,ax
+    ; Message to the User
+    mov ah,9
+    lea dx,a
+    int 21h   
+    
+    
+    
+  ; Message to the User
+    mov ah,9
+    lea dx,a
+    int 21h 
+
+   
+    mov ah,9
+    lea dx,b
+    int 21h 
+    
+    mov ah,9
+    lea dx,c
+    int 21h 
+    
+    
+    mov ah,9
+    lea dx,a
+    int 21h 
+   
+   
+    mov ah,9
+    lea dx,d
+    int 21h
+    
+start: 
+   
+    mov ah,1
+    int 21h
+    mov cl,al
+    
+    cmp cl,'y'
+    je next1
+    cmp cl,'Y'
+    je next1
+    
+    
+    cmp cl,'n'
+    je exit
+    cmp cl,'N'
+    je exit
+    
+next1:
+ 
+    mov ah,9
+    lea dx,e
+    int 21h 
+    
+    sub cl,cl
+    
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt1
+    
+    cmp cl,'n'
+    je nsnxt1
+    
+
+    
+
+snxt1:
+    
+   
+    mov bl,50
+    
+    
+    jmp next2  
+    
+nsnxt1:
+
+    mov bl, 48
+    
+    jmp next2
+    
+
+next2:
+ 
+    mov ah,9
+    lea dx,f
+    int 21h 
+    
+
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt2
+ 
+ 
+    cmp cl,'n'
+    je nsnxt2
+   
+
+snxt2:
+    
+    
+    mov bh,50 
+    
+    add bl,bh
+    sub bl,48
+    
+    
+    jmp next3
+    
+    
+nsnxt2:
+    
+    sub bh,bh
+    mov bh, 48 
+    
+    
+    
+        
+    add bl,bh
+    sub bl,48
+    jmp next3
+       
+    
+    
+            
+next3:
+ 
+    mov ah,9
+    lea dx,g
+    int 21h 
+    
+    sub cl,cl
+    
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt3
+    
+    
+    cmp cl,'n'
+    je nsnxt3
+    
+
+snxt3:
+    
+    sub bh,bh
+    mov bh,50 
+    
+    add bl,bh
+    sub bl,48
+    
+    
+    jmp next4
+
+
+
+nsnxt3:
+    
+    sub bh,bh
+    mov bh, 48 
+    
+    
+    
+    add bl,bh
+    sub bl,48
+    jmp next4
+       
+
+
+    
+    
+next4:
+ 
+    mov ah,9
+    lea dx,h
+    int 21h 
+    
+    sub cl,cl
+    
+     
+    mov ah,1
+    int 21h
+    mov cl,al  
+    
+    cmp cl,'y'
+    je snxt4
+    
+    
+    cmp cl,'n'
+    je nsnxt4
+    
+    
+    
+snxt4:
+    
+    sub bh,bh
+    mov bh,50 
+    
+    add bl,bh
+    sub bl,48
+    
+    
+    jmp output
+    
+    
+    
+nsnxt4:
+    
+    sub bh,bh
+    mov bh, 48 
+    
+    
+    add bl,bh
+    sub bl,48
+    
+    jmp output
+       
+        
+output:
+
+  
+
+  
+  cmp bl,48
+
+  je status1
+
+
+  cmp bl,50
+
+  je status2
+
+
+  cmp bl,52
+
+  je status3
+
+
+  cmp bl,54
+
+  je status4 
+
+
+  cmp bl,56
+
+  je status5     
+
+
+
+
+status1: 
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+
+    mov ah,9
+    lea dx,i
+    int 21h  
+    
+    jmp exit
+
+
+
+
+
+status2:
+
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+    mov ah,9
+    lea dx,j
+    int 21h
+    
+      
+    jmp exit
+
+
+status3:
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+
+    mov ah,9
+    lea dx,k
+    int 21h 
+    
+    jmp exit   
+    
+    
+status4:   
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+    mov ah,9
+    lea dx,l
+    int 21h 
+               
+    jmp exit 
+    
+    
+              
+status5:   
+
+
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+
+    mov ah,9
+    lea dx,m
+    int 21h 
+
+
+    jmp exit
+ exit:
+    mov ah,4ch
+    int 21h
+    main endp 
+end main
                     </code>
                   </pre>
                 </div>
@@ -156,13 +1330,394 @@
                 <div class="scroll">
                   <pre>
                     <code>
-                      #include <iostream>
-                        using namespace std;
+                      .model small
+                      .stack 100h
+                      .data        
+                      a db 10,13,'       ********************************************************** $'   
+                      b db 10,13, '           Find out your health stability(covid)!!  $'
+                      c db 10,13, '        For each question, enter y if you have the symptom $' 
+                      
+                      d db 10,13, 'start?(y/n) $'
+                      
+                      e db 10,13, ' Are you suffering from fever?(y/n) $'  
+                      
+                      f db 10,13, ' Are you snoring (y/n) $'  
+                      
+                      
+                      g db 10,13, ' Are you coughing (y/n) $' 
+                      
+                      h db 10,13, ' Are you suffering from dysentery (y/n) $ '  
+                      
+                      
+                      i db 10,13, ' You health status is excellent. Stay home,Stay Safe $ ' 
+                      
+                      
+                      j db 10,13, ' Your health status isnot alarming, but contact with an certified physician and take proper medicines $ '
+                      
+                      
+                      k db 10,13, ' your health status isnot so good. Covid test is mandatory $ '
+                      
+                      
+                      l db 10,13, ' Your health condition is worst. Covid test needed  $ ' 
+                      
+                      m db 10,13, ' Your symtoms matches with covid. Please imidiately get yourself admitted in hospital $ ' 
                         
-                        int main() {
-                          cout << "Hello World!";
-                          return 0;
-                        }
+                      
+                      .code
+                      main proc
+                          mov ax,@data
+                          mov ds,ax
+                          ; Message to the User
+                          mov ah,9
+                          lea dx,a
+                          int 21h   
+                          
+                          
+                          
+                        ; Message to the User
+                          mov ah,9
+                          lea dx,a
+                          int 21h 
+                      
+                         
+                          mov ah,9
+                          lea dx,b
+                          int 21h 
+                          
+                          mov ah,9
+                          lea dx,c
+                          int 21h 
+                          
+                          
+                          mov ah,9
+                          lea dx,a
+                          int 21h 
+                         
+                         
+                          mov ah,9
+                          lea dx,d
+                          int 21h
+                          
+                      start: 
+                         
+                          mov ah,1
+                          int 21h
+                          mov cl,al
+                          
+                          cmp cl,'y'
+                          je next1
+                          cmp cl,'Y'
+                          je next1
+                          
+                          
+                          cmp cl,'n'
+                          je exit
+                          cmp cl,'N'
+                          je exit
+                          
+                      next1:
+                       
+                          mov ah,9
+                          lea dx,e
+                          int 21h 
+                          
+                          sub cl,cl
+                          
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt1
+                          
+                          cmp cl,'n'
+                          je nsnxt1
+                          
+                      
+                          
+                      
+                      snxt1:
+                          
+                         
+                          mov bl,50
+                          
+                          
+                          jmp next2  
+                          
+                      nsnxt1:
+                      
+                          mov bl, 48
+                          
+                          jmp next2
+                          
+                      
+                      next2:
+                       
+                          mov ah,9
+                          lea dx,f
+                          int 21h 
+                          
+                      
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt2
+                       
+                       
+                          cmp cl,'n'
+                          je nsnxt2
+                         
+                      
+                      snxt2:
+                          
+                          
+                          mov bh,50 
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          
+                          jmp next3
+                          
+                          
+                      nsnxt2:
+                          
+                          sub bh,bh
+                          mov bh, 48 
+                          
+                          
+                          
+                              
+                          add bl,bh
+                          sub bl,48
+                          jmp next3
+                             
+                          
+                          
+                                  
+                      next3:
+                       
+                          mov ah,9
+                          lea dx,g
+                          int 21h 
+                          
+                          sub cl,cl
+                          
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt3
+                          
+                          
+                          cmp cl,'n'
+                          je nsnxt3
+                          
+                      
+                      snxt3:
+                          
+                          sub bh,bh
+                          mov bh,50 
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          
+                          jmp next4
+                      
+                      
+                      
+                      nsnxt3:
+                          
+                          sub bh,bh
+                          mov bh, 48 
+                          
+                          
+                          
+                          add bl,bh
+                          sub bl,48
+                          jmp next4
+                             
+                      
+                      
+                          
+                          
+                      next4:
+                       
+                          mov ah,9
+                          lea dx,h
+                          int 21h 
+                          
+                          sub cl,cl
+                          
+                           
+                          mov ah,1
+                          int 21h
+                          mov cl,al  
+                          
+                          cmp cl,'y'
+                          je snxt4
+                          
+                          
+                          cmp cl,'n'
+                          je nsnxt4
+                          
+                          
+                          
+                      snxt4:
+                          
+                          sub bh,bh
+                          mov bh,50 
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          
+                          jmp output
+                          
+                          
+                          
+                      nsnxt4:
+                          
+                          sub bh,bh
+                          mov bh, 48 
+                          
+                          
+                          add bl,bh
+                          sub bl,48
+                          
+                          jmp output
+                             
+                              
+                      output:
+                      
+                        
+                      
+                        
+                        cmp bl,48
+                      
+                        je status1
+                      
+                      
+                        cmp bl,50
+                      
+                        je status2
+                      
+                      
+                        cmp bl,52
+                      
+                        je status3
+                      
+                      
+                        cmp bl,54
+                      
+                        je status4 
+                      
+                      
+                        cmp bl,56
+                      
+                        je status5     
+                      
+                      
+                      
+                      
+                      status1: 
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                      
+                          mov ah,9
+                          lea dx,i
+                          int 21h  
+                          
+                          jmp exit
+                      
+                      
+                      
+                      
+                      
+                      status2:
+                      
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                          mov ah,9
+                          lea dx,j
+                          int 21h
+                          
+                            
+                          jmp exit
+                      
+                      
+                      status3:
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                      
+                          mov ah,9
+                          lea dx,k
+                          int 21h 
+                          
+                          jmp exit   
+                          
+                          
+                      status4:   
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                          mov ah,9
+                          lea dx,l
+                          int 21h 
+                                     
+                          jmp exit 
+                          
+                          
+                                    
+                      status5:   
+                      
+                      
+                          mov ah,2
+                          mov dl,10
+                          int 21h
+                          mov dl,13
+                          int 21h
+                      
+                          mov ah,9
+                          lea dx,m
+                          int 21h 
+                      
+                      
+                          jmp exit
+                       exit:
+                          mov ah,4ch
+                          int 21h
+                          main endp 
+                      end main
                     </code>
                   </pre>
                 </div>
@@ -192,34 +1747,31 @@
       <div class="output-bottom">
         <div class="container">
           <div class="mySlides">
-            <div class="numbertext">1 / 6</div>
-            <img src="./img/1.jpg" style="width:100%;height: 74vh;">
+            <div class="numbertext">1 / 5</div>
+            <img src="./img/1.png" style="width:100%;height: 74vh;">
           </div>
 
           <div class="mySlides">
-            <div class="numbertext">2 / 6</div>
-            <img src="./img/2.jpg" style="width:100%;height: 74vh;">
+            <div class="numbertext">2 / 5</div>
+            <img src="./img/2.png" style="width:100%;height: 74vh;">
           </div>
 
           <div class="mySlides">
-            <div class="numbertext">3 / 6</div>
-            <img src="./img/3.jpg" style="width:100%;height: 74vh;">
+            <div class="numbertext">3 / 5</div>
+            <img src="./img/3.png" style="width:100%;height: 74vh;">
           </div>
 
           <div class="mySlides">
-            <div class="numbertext">4 / 6</div>
-            <img src="./img/4.jpg" style="width:100%;height: 74vh;">
+            <div class="numbertext">4 / 5</div>
+            <img src="./img/4.png" style="width:100%;height: 74vh;">
           </div>
 
           <div class="mySlides">
-            <div class="numbertext">5 / 6</div>
-            <img src="./img/5.jpg" style="width:100%;height: 74vh;">
+            <div class="numbertext">5 / 5</div>
+            <img src="./img/5.png" style="width:100%;height: 74vh;">
           </div>
 
-          <div class="mySlides">
-            <div class="numbertext">6 / 6</div>
-            <img src="./img/6.jpg" style="width:100%;height: 74vh;">
-          </div>
+
 
           <a class="prev" onclick="plusSlides(-1)">❮</a>
           <a class="next" onclick="plusSlides(1)">❯</a>
@@ -249,8 +1801,8 @@
               <div class="card-container">
                 <h2>MD. JAHID HASAN</h2>
                 <p class="card-title">ID: 18-37970-2</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>mdjahidhasanf92@gmail.com</p>
+                <p><b><i>Contribution:</i></b> Till now UI has been completed by me.</p>
+                <p><b><i>EMAIL:</i></b> mdjahidhasanf92@gmail.com</p>
                 <p><button class="card-button">Contact</button></p>
               </div>
             </div>
@@ -262,8 +1814,8 @@
               <div class="card-container">
                 <h2>RAFSHAN BIN RAZZAK</h2>
                 <p class="card-title">ID:</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>rafshan.nds@gmail.com</p>
+                <p><b><i>Contribution:</i></b> I have completed health checkup system in the assembly code.</p>
+                <p><b><i>EMAIL:</i></b> rafshan.nds@gmail.com</p>
                 <p><button class="card-button">Contact</button></p>
               </div>
             </div>
@@ -275,8 +1827,8 @@
               <div class="card-container">
                 <h2>NUHAN ISLAM</h2>
                 <p class="card-title">ID:</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>nhnislm@gmail.com</p>
+                <p>Contribution:</i></b> I am working on other features in the project with assembly language.</p>
+                <p><b><i>EMAIL:</i></b> nhnislm@gmail.com</p>
                 <p><button class="card-button">Contact</button></p>
               </div>
             </div>
@@ -288,8 +1840,8 @@
               <div class="card-container">
                 <h2>SABA TABASSUM</h2>
                 <p class="card-title">ID: </p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p>saba30oishy@gmail.com</p>
+                <p>Contribution:</i></b> I am working on other feature in the project with assembly language.</p>
+                <p><b><i>EMAIL:</i></b> saba30oishy@gmail.com</p>
                 <p><button class="card-button">Contact</button></p>
               </div>
             </div>

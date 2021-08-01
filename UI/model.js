@@ -54,3 +54,13 @@ function removeActiveClass() {
     panel.classList.remove('active');
   })
 }
+const menu = document.querySelector('.menu.container')
+document.addEventListener('scroll', () => {
+  var scroll_position = window.scrollY;
+  if (scroll_position > 250) {
+    menu.style.backgroundColor = '#29323c'
+  }
+  else {
+    menu.style.backgroundColor = 'transparent'
+  }
+})
