@@ -381,7 +381,7 @@ img{
 }
 .slide-container {
   position: relative;
-  width: 70vw;
+  width: 80vw;
   left: 220px;
   
   
@@ -558,6 +558,11 @@ img{
   text-align: left;
   font-size: 16px;
   margin-bottom: 15px;
+}
+.card-container.jahid p{
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 3px;
 }
 
 .card-button {
