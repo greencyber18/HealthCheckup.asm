@@ -1,12 +1,15 @@
+
 const open = document.getElementById('open');
 const model_container = document.getElementById('model_container');
 const close = document.getElementById('close');
 
 open.addEventListener('click', () => {
   model_container.classList.add('show');
+
 });
 close.addEventListener('click', () => {
   model_container.classList.remove('show');
+
 });
 
 const open1 = document.getElementById('open1');
@@ -42,7 +45,18 @@ close3.addEventListener('click', () => {
   model_container3.classList.remove('show');
 });
 
-const panels = document.querySelectorAll('.code-done-by')
+const open4 = document.getElementById('open4');
+const model_container4 = document.getElementById('model_container4');
+const close4 = document.getElementById('close4');
+
+open4.addEventListener('click', () => {
+  model_container4.classList.add('show');
+});
+close4.addEventListener('click', () => {
+  model_container4.classList.remove('show');
+});
+
+const panels = document.querySelectorAll('.code-done-by');
 panels.forEach(panel => {
   panel.addEventListener('click', () => {
     removeActiveClass();
